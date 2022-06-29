@@ -6,18 +6,19 @@ phases:
       java: corretto11
   pre_build:
     commands:
-      - wget -c http://services.gradle.org/distributions/gradle-6.2.2-all.zip
-      - unzip  gradle-6.9.1-all.zip -d /opt
-      - ln -s /opt/gradle-6.9.1 /opt/gradle
-      - printf "export GRADLE_HOME=/opt/gradle\nexport PATH=\$PATH:\$GRADLE_HOME/bin\n" > /etc/profile.d/gradle.sh
-      - source /etc/profile.d/gradle.sh
-      - gradle -v
+      - chmod +x gradlew
+      # - wget -c http://services.gradle.org/distributions/gradle-6.2.2-all.zip
+      # - unzip  gradle-6.9.1-all.zip -d /opt
+      # - ln -s /opt/gradle-6.9.1 /opt/gradle
+      # - printf "export GRADLE_HOME=/opt/gradle\nexport PATH=\$PATH:\$GRADLE_HOME/bin\n" > /etc/profile.d/gradle.sh
+      # - source /etc/profile.d/gradle.sh
+      # - gradle -v
   build:
     commands:
-      - gradle build
-      - sudo su
+      # - gradle build
+      # - sudo su
       - ./gradlew build
-      - gradlew build
+      # - gradlew build
   post_build:
     commands:
       - echo Build completed
