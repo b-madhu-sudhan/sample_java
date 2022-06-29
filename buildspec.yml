@@ -20,7 +20,7 @@ phases:
       - yum install java-17-amazon-corretto-devel -y
       - alternatives --set java /usr/lib/jvm/java-17-amazon-corretto.aarch64/bin/java
       - echo $PATH
-      # - ls /opt/gradle-6.2.2
+      - ls /usr/lib
   build:
     commands:
       - gradle build
