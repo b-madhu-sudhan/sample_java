@@ -15,10 +15,10 @@ phases:
       # - source /etc/profile.d/gradle.sh
       # - gradle -v
       # - export PATH=$PATH:/opt/gradle-6.2.2/bin
-      # - gradle -v
+      - gradle -v
       - sudo add-apt-repository ppa:cwchien/gradle
       - sudo apt-get update
-      - sudo apt upgrade gradle
+      - sudo apt upgrade gradle -y
       # - echo Nothing to do in the pre_build phase...
       # - yum install java-17-amazon-corretto-devel -y
       # - java -version
