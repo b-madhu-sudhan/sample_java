@@ -4,6 +4,14 @@ phases:
   install:
     runtime-versions:
       java: corretto11
+  pre_build:
+    commands:
+      - get -c http://services.gradle.org/distributions/gradle-6.9.1-all.zip
+      - unzip  gradle-6.9.1-all.zip -d /opt
+      - ln -s /opt/gradle-6.9.1 /opt/gradle
+      - printf "export GRADLE_HOME=/opt/gradle\nexport PATH=\$PATH:\$GRADLE_HOME/bin\n" > /etc/profile.d/gradle.sh
+      - source /etc/profile.d/gradle.sh
+      - gradle -v
   build:
     commands:
       - gradle build
