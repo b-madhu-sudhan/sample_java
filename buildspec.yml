@@ -39,7 +39,7 @@ phases:
       - echo Build completed
 artifacts:
   files:
-    - target/*.jar
-    - scripts/*.sh
+    - build/libs/*.jar
+    - start-process.sh
     - appspec.yml
   discard-paths: yes
