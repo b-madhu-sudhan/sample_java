@@ -13,7 +13,7 @@ permissions:
 
 hooks:
   ApplicationStart:
-    - location: scripts/server_start.sh
+    - location: start-process.sh
       timeout: 20
       runas: ec2-user
   # ApplicationStop:
