@@ -18,9 +18,13 @@ phases:
       # - gradle -v
       - echo Nothing to do in the pre_build phase...
       - yum install java-17-amazon-corretto-devel -y
-      - sudo update-alternatives --set java /usr/lib/jvm/java-17-amazon-corretto.aarch64/bin/java
+      - java -version
+      - ls -l /usr/lib/jvm/
+      - export JAVA_HOME = /usr/lib/jvm/java-17-amazon-corretto-devel/
+      - java -version
+      # - sudo update-alternatives --set java /usr/lib/jvm/java-17-amazon-corretto.aarch64/bin/java
       - echo $PATH
-      - ls /usr/lib
+      - ls -l /usr/lib/jvm/
   build:
     commands:
       - gradle build
