@@ -6,7 +6,10 @@ phases:
       java: corretto11
   build:
     commands:
-      - sudo ./gradlew build
+      - gradle build
+      - sudo su
+      - ./gradlew build
+      - gradlew build
   post_build:
     commands:
       - echo Build completed
