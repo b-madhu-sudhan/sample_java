@@ -20,9 +20,9 @@ phases:
       # - ls /opt/gradle-6.2.2
   build:
     commands:
-      # - gradle build
+      - gradle build
       # - sudo su
-      - ./gradlew build
+      # - ./gradlew build
       # - gradlew build
   post_build:
     commands:
