@@ -17,7 +17,7 @@ phases:
       # - export PATH=$PATH:/opt/gradle-6.2.2/bin
       # - gradle -v
       - echo $PATH
-      - ls /opt/gradle-6.2.2
+      # - ls /opt/gradle-6.2.2
   build:
     commands:
       # - gradle build
