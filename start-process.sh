@@ -1,3 +1,3 @@
 #!/bin/bash
 
-java -jar build/libs/myapp.jar
+java -jar myapp.jar
