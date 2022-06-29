@@ -5,6 +5,8 @@ plugins {
 }
 
 group = 'com.example'
+// archivesBaseName = 'app'
+// jar.baseName = 'app'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
@@ -19,4 +21,9 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+bootJar {
+    // Prevent version number from being appended to the JAR filename.
+    version ""
 }
