@@ -7,12 +7,12 @@ phases:
   pre_build:
     commands:
       - chmod +x gradlew
-      # - wget -c http://services.gradle.org/distributions/gradle-6.2.2-all.zip
-      # - unzip  gradle-6.9.1-all.zip -d /opt
-      # - ln -s /opt/gradle-6.9.1 /opt/gradle
-      # - printf "export GRADLE_HOME=/opt/gradle\nexport PATH=\$PATH:\$GRADLE_HOME/bin\n" > /etc/profile.d/gradle.sh
-      # - source /etc/profile.d/gradle.sh
-      # - gradle -v
+      - wget -c https://services.gradle.org/distributions/gradle-6.2.2-all.zip
+      - unzip  gradle-6.2.2-all.zip -d /opt
+      - ln -s /opt/gradle-6.2.2 /opt/gradle
+      - printf "export GRADLE_HOME=/opt/gradle\nexport PATH=\$PATH:\$GRADLE_HOME/bin\n" > /etc/profile.d/gradle.sh
+      - source /etc/profile.d/gradle.sh
+      - gradle -v
   build:
     commands:
       # - gradle build
