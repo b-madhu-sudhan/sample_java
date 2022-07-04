@@ -1,3 +1,4 @@
 #!/bin/bash
-cd /home/ec2-user/app
-java -jar myapp.jar
+sudo systemctl daemon-reload
+sudo systemctl enable sample
+sudo systemctl start sample
