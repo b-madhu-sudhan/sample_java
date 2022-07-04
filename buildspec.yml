@@ -41,6 +41,6 @@ artifacts:
   files:
     - build/libs/*.jar
     - start-process.sh
-    - scripts/*.sh
+    - kill-process.sh
     - appspec.yml
   discard-paths: yes
