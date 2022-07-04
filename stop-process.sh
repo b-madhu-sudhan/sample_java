@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo systemctl stop  sample
+sudo systemctl stop sample
