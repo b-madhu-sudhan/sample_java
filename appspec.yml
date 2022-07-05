@@ -16,10 +16,10 @@ hooks:
     - location: start-process.sh
       timeout: 20
       runas: ec2-user
-  ApplicationStop:
-    - location: kill-process.sh
-      timeout: 20
-      runas: ec2-user
+  # ApplicationStop:
+  #   - location: kill-process.sh
+  #     timeout: 20
+  #     runas: ec2-user
       # AfterInstall:
   #   - location: start-process.sh
   #     timeout: 20
