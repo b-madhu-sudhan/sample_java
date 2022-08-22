@@ -24,7 +24,7 @@ jobs:
     - name: gradle install
       run: export PATH=$PATH:/opt/gradle/gradle-6.2.2/bin
     - name: Build with Gradle
-      run: gradle build
+      run: export PATH=$PATH:/opt/gradle/gradle-6.2.2/bin;gradle build
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
