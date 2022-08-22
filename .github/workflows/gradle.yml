@@ -25,7 +25,13 @@ jobs:
       run: export PATH=$PATH:/opt/gradle/gradle-6.2.2/bin
     - name: Build with Gradle
       run: export PATH=$PATH:/opt/gradle/gradle-7.4.2/bin;gradle build
-    - name: Stop the service
-      run: sudo systemctl stop sample
-    - name: Run the java service
-      run: cd /home/ec2-user/actions-runner/_work/sample_java/sample_java;chmod u+x execution.sh;sudo systemctl daemon-reload;sudo systemctl enable sample;sudo systemctl start sample
+  continuous-deployment:
+      runs-on: ubuntu-latest
+      needs: [continuous-integration]
+      if: github.ref == 'refs/heads/master'
+      steps:
+       # Step 1
+        - name: Stop the service
+          run: sudo systemctl stop sample
+        - name: Run the java service
+          run: cd /home/ec2-user/actions-runner/_work/sample_java/sample_java;chmod u+x execution.sh;sudo systemctl daemon-reload;sudo systemctl enable sample;sudo systemctl start sample
