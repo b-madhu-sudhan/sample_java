@@ -20,7 +20,6 @@ jobs:
       run: export PATH=$PATH:/opt/gradle/gradle-6.2.2/bin
     - name: Build with Gradle
       run: export PATH=$PATH:/opt/gradle/gradle-7.4.2/bin;gradle build
-      
   continuous-deployment:
       runs-on: self-hosted
       needs: [continuous-integration]
