@@ -20,7 +20,7 @@ jobs:
     - name: Build with Gradle
       run: export PATH=$PATH:/opt/gradle/gradle-7.4.2/bin;gradle build
   continuous-deployment:
-      runs-on: ubuntu-latest
+      runs-on: self-hosted
       needs: [continuous-integration]
       if: github.ref == 'refs/heads/master'
       steps:
