@@ -30,4 +30,4 @@ jobs:
         - name: Stop the service
           run: sudo systemctl stop sample
         - name: Run the java service
-          run: cd /home/ec2-user/actions-runner/_work/sample_java/sample_java;chmod u+x execution.sh;sudo systemctl daemon-reload;sudo systemctl enable sample;sudo systemctl start sample
+          run: cd /home/ec2-user/actions-runner/pims/sample_java/sample_java;chmod u+x execution.sh;sudo systemctl daemon-reload;sudo systemctl enable sample;sudo systemctl start sample
