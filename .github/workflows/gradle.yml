@@ -15,6 +15,7 @@ jobs:
   continuous-integration:
     runs-on: self-hosted
     steps:
+    - uses: actions/checkout@v3
     - name: gradle install
       run: export PATH=$PATH:/opt/gradle/gradle-6.2.2/bin
     - name: Build with Gradle
