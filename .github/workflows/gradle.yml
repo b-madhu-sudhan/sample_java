@@ -13,7 +13,7 @@ on:
 
 jobs:
   continuous-integration:
-    runs-on: self-hosted
+    runs-on: [self-hosted,pims-demo]
     steps:
     - uses: actions/checkout@v3
     - name: gradle install
@@ -21,7 +21,7 @@ jobs:
     - name: Build with Gradle
       run: export PATH=$PATH:/opt/gradle/gradle-7.4.2/bin;gradle build
   continuous-deployment:
-      runs-on: self-hosted
+      runs-on: [self-hosted,pims-demo]
       needs: [continuous-integration]
       steps:
        # Step 1
