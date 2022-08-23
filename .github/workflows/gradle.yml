@@ -9,7 +9,7 @@ name: Java CI with Gradle
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master", "demo" ]
 
 jobs:
   continuous-integration:
@@ -23,9 +23,15 @@ jobs:
   continuous-deployment:
       runs-on: self-hosted
       needs: [continuous-integration]
-      if: github.ref == 'refs/heads/master'
       steps:
        # Step 1
+        - name: remove existing execution file
+          run: cd /home/ec2-user/actions-runner/pims/sample_java/sample_java; rm execution.sh
+        - name: create new execution file
+          run: echo 'cd /home/ec2-user/actions-runner/pims/sample_java/sample_java/build/libs' >> execution.sh
+        - name: Excecute the qa env
+          if: github.ref == 'refs/heads/master'
+          run: echo 'java -jar myapp.jar' >> execution.sh
         - name: Stop the service
           run: sudo systemctl stop sample
         - name: Run the java service
