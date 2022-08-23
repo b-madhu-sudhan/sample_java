@@ -32,6 +32,8 @@ jobs:
         - name: Excecute the qa env
           if: github.ref == 'refs/heads/master'
           run: echo 'java -jar myapp.jar' >> execution.sh
+        - name: echo demo
+          run: echo 'echo 1' >> execution.sh
         - name: Stop the service
           run: sudo systemctl stop sample
         - name: Run the java service
