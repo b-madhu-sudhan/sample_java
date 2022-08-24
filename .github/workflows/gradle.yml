@@ -13,24 +13,38 @@ on:
 
 jobs:
   continuous-integration:
-    runs-on: [self-hosted,pims-demo]
+    if: github.ref == 'refs/heads/master'
+    runs-on: [self-hosted,pims-demo] 
     steps:
     - uses: actions/checkout@v3
     - name: gradle install
       run: export PATH=$PATH:/opt/gradle/gradle-6.2.2/bin
     - name: Build with Gradle
       run: export PATH=$PATH:/opt/gradle/gradle-7.4.2/bin;gradle build
+  continuous-integration-qa:
+    if: github.ref == 'refs/heads/qa'
+    runs-on: [self-hosted,pims-qa]
+    steps:
+    - uses: actions/checkout@v3
+    - name: gradle install
+      run: export PATH=$PATH:/opt/gradle/gradle-6.2.2/bin
+    - name: Build with Gradle
+      run: export PATH=$PATH:/opt/gradle/gradle-7.4.2/bin;gradle build
+    
   continuous-deployment:
       runs-on: [self-hosted,pims-demo]
-      needs: [continuous-integration]
+      needs: [continuous-integration,continuous-integration-qa]
       steps:
        # Step 1
         - name: remove existing execution file
           run: cd /home/ec2-user/actions-runner/pims/sample_java/sample_java; rm execution.sh
         - name: create new execution file
           run: echo 'cd /home/ec2-user/actions-runner/pims/sample_java/sample_java/build/libs' >> execution.sh
-        - name: Excecute the qa env
+        - name: Excecute the demo env
           if: github.ref == 'refs/heads/master'
+          run: echo 'java -jar myapp.jar' >> execution.sh
+        - name: Execute the qa env
+          if: github.ref == 'refs/heads/qa'
           run: echo 'java -jar myapp.jar' >> execution.sh
         - name: Stop the service
           run: sudo systemctl stop sample
