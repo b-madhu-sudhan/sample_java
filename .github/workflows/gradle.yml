@@ -33,18 +33,29 @@ jobs:
     
   continuous-deployment:
       runs-on: [self-hosted,pims-demo]
-      needs: [continuous-integration,continuous-integration-qa]
+      needs: [continuous-integration]
       steps:
        # Step 1
         - name: remove existing execution file
           run: cd /home/ec2-user/actions-runner/pims/sample_java/sample_java; rm execution.sh
         - name: create new execution file
           run: echo 'cd /home/ec2-user/actions-runner/pims/sample_java/sample_java/build/libs' >> execution.sh
-        - name: Excecute the demo env
-          if: github.ref == 'refs/heads/master'
+        - name: Added execution command to file
           run: echo 'java -jar myapp.jar' >> execution.sh
-        - name: Execute the qa env
-          if: github.ref == 'refs/heads/qa'
+        - name: Stop the service
+          run: sudo systemctl stop sample
+        - name: Run the java service
+          run: cd /home/ec2-user/actions-runner/pims/sample_java/sample_java;chmod u+x execution.sh;sudo systemctl daemon-reload;sudo systemctl enable sample;sudo systemctl start sample
+  continuous-deployment-qa:
+      runs-on: [self-hosted,pims-qa]
+      needs: [continuous-integration-qa]
+      steps:
+       # Step 1
+        - name: remove existing execution file
+          run: cd /home/ec2-user/actions-runner/pims/sample_java/sample_java; rm execution.sh
+        - name: create new execution file
+          run: echo 'cd /home/ec2-user/actions-runner/pims/sample_java/sample_java/build/libs' >> execution.sh
+        - name: Added execution command to file
           run: echo 'java -jar myapp.jar' >> execution.sh
         - name: Stop the service
           run: sudo systemctl stop sample
