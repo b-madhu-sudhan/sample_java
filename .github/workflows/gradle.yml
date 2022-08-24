@@ -9,7 +9,7 @@ name: Java CI with Gradle
 
 on:
   push:
-    branches: [ "master", "demo" ]
+    branches: [ "master", "qa" ]
 
 jobs:
   continuous-integration:
