@@ -27,7 +27,7 @@ jobs:
     - name: Build with Gradle
       run: gradle build
     - name: Deploy to Server
-      uses: easingthemes/ssh-deploy@test_ssh
+      uses: easingthemes/ssh-deploy@v3
       env:
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
           ARGS: "-rltgoDzvO --delete"
